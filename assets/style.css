@@ -1,0 +1,5 @@
+.questions{
+    grid-template-rows: 5;
+    grid-template-columns: 1;
+}
+    
