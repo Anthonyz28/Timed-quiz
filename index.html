@@ -3,30 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/style.css"/>
     <title>Timed Quiz</title>
 </head>
 
 <body>
-    <nav class="navbar">
-        <form class="form-inline">
-            <h2 id="time">60</h2>
+    <header>
+        <button id="view-high-scores" class="nav-btn btn"><span>{</span>View High Scores<span>}</span></button>
+        <div id="timer"></div>
+    </header>
+
+    <main class="container">
+        <section id="intro-container">
+            <h2 class="title">Timed Quiz</h2>
+            <p>
+                Answer the following questions within the time. Wrong answers will penalize the score by 10 secounds!
+            </p>
+            <button id="start-btn" class="nav-btn btn"><span>{</span>Start<span>}</span></button>
+        </section>
+        
+        <section id="question-container" class="hide">
+            <h2 id="question" class="question"></h2>
+            <div id="answers" class="btn-grid"></div>
+        </section>
+
+        <form id="results-container" class="hide">
+            <h2>Finished!</h2>
+            <p>Your final score is <span id="score"></span>.</p>
+            <input type="text" name="user-initials" id="user-initials" placeholder="Enter initials!" />
+            <button id="save-high-score" class="nav-btn btn" type="submit"><span>{</span>Submit<span>}</span></button>
         </form>
-    </nav>
-   
-    <div class="quiz">
-        <div class="quizTitle">
-            <h1 id="promptspace">Coding Quiz</h1>
-            <br>
-        </div>
-        <div class="row mt-5">
-            <div class="column">
-                <button id="start" onclick="startQuiz()" type="button" class="btn">
-                Start Quiz
-            </button>
-            </div>
-        </div>
-    </div>
+
+        <section id="high-scores-container" class="hide">
+            <h2>Top 5 Scores<span>:</span></h2>
+                <ul id="high-scores-list"></ul>
+            <button id="try-again" class="nav-btn btn"><span>{</span>Try Again<span>}</span></button>
+        </section>
+
+        <section>
+            <div id="correct-answer" class="correct hide">// Correct!</div>
+            <div id="wrong-answer" class="wrong hide">// Sorry, wrong answer.</div>
+        </section>
+    </main>
     <script src="./assets/script.js"></script>
 </body>
 </html>
