@@ -42,8 +42,8 @@ var quizQuestions = [
         { text: 'all of the above', correct: true}
     ]},
 
-    {question:'String valve must be enclosed within _______ when being assigned to varibles',
-    answer:[
+    {question:'String value must be enclosed within _______ when being assigned to varibles',
+    answers:[
         { text: 'commas', correct: false },
         { text: 'curly brackets', correct: false },
         { text: 'quotes', correct: true },
@@ -79,6 +79,32 @@ function introduceQuiz() {
     highScoresContainerEl.classList.add("hide");
 
     introContainerEl.classList.remove("hide");
+};
+
+function startQuiz() {
+    introContainerEl.classList.add("hide");
+
+    shuffledQuestions = quizQuestions.sort(() => Math.random() - .5);
+    currentQuestionIndex = 0
+    questionContainerEl.classList.remove("hide");
+
+    startTimer();
+    showNextQuestion();
+};
+
+function startTimer() {
+    var timerInterval = setInterval(function() {
+        if (timerValue >= 1 && shuffledQuestions.length > currentQuestionIndex) {
+            timerEl.textContent = "Time Left: " + timerValue + "s";
+            timerValue--;
+        } else if (timerValue <= 0) {
+            showHighScoresList();
+        } else {
+            timerEl.textContent = "Time Left: " + timerValue + "s";
+            clearInterval(timerInterval);
+            endQuiz();
+        }
+    }, 1000); 
 };
 
 function showQuestion(question) {
